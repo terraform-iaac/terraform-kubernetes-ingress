@@ -1,12 +1,12 @@
 variable "internal_web_port" {
   default = [
     {
-      sub_domain = "jenkins" //(Optional)
+      sub_domain = "jenkins." //(Optional) ( subdomain must consist " . " in the end)
       path = "/jenkins-dev" //(Optional)
       internal_port = "8080" //(Required)
     },
     {
-      sub_domain = "jenkins" //(Optional)
+      sub_domain = "jenkins." //(Optional)
       path = "/jenkins-prod" //(Optional)
       internal_port = "9090" //(Required)
     }

@@ -1,4 +1,4 @@
-resource "kubernetes_ingress" "add_ingress" {
+resource "kubernetes_ingress" "ingress" {
   metadata {
     name = var.app_name
     namespace = var.app_namespace
@@ -9,7 +9,7 @@ resource "kubernetes_ingress" "add_ingress" {
       iterator = web_port
       for_each = var.web_internal_port
       content {
-        host = "${lookup(web_port.value, "sub_domain", "")}${var.domain_name}"
+        host = "${lookup(web_port.value, "sub_domain", "")}${lookup(web_port.value, "domain", var.domain_name)}"
         http {
           path {
             path = lookup(web_port.value, "path", null)
@@ -24,7 +24,7 @@ resource "kubernetes_ingress" "add_ingress" {
     dynamic "tls" {
       for_each = var.tls
       content {
-        secret_name = tls.value.tls
+        secret_name = tls.value
       }
     }
   }

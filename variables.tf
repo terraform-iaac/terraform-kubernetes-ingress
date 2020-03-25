@@ -5,10 +5,11 @@ variable "app_namespace" {
   description = "(Required) Namespace where located application"
 }
 variable "web_internal_port" {
-  description = "(Required) Container port, ingress will redirect request to this port"
+  description = "(Required) Container port, ingress will redirect request to this port.  Also could add subdomain ( example: subdomain.domainname.com). And path for access ( example: domain.com/path ). And redefine domain."
 }
 variable "domain_name" {
-  description = "(Required) Domain name for URL access ( example: google.com). Also could add subdomain ( example: subdomain.domainname.com). And path for access ( example: domain.com/path )"
+  description = "(Otional) Global domain name for all URL ( example: google.com)."
+  default = "example.com"
 }
 variable "tls" {
   description = "(Optional) Enable https traffic & and include SSL Certificate"

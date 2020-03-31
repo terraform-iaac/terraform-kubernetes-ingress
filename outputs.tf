@@ -1,9 +1,9 @@
 output "load_balancer_ingress_ip" {
-  value = kubernetes_ingress.ingress.load_balancer_ingress[0].ip
+  value = kubernetes_ingress.ingress.load_balancer_ingress.*.ip
 }
 
 output "load_balancer_ingress_hostname" {
-  value = kubernetes_ingress.ingress.load_balancer_ingress[0].hostname
+  value = kubernetes_ingress.ingress.load_balancer_ingress.*.hostname
 }
 
 output "id" {

@@ -25,3 +25,7 @@ variable "annotations" {
     "kubernetes.io/ingress.class" = "nginx"
   }
 }
+variable "tls_hosts" {
+  description = "(Optional) Enable https traffic & and include SSL Certificate with hosts match"
+  default = []
+}

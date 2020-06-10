@@ -14,7 +14,7 @@ resource "kubernetes_ingress" "ingress" {
           path {
             path = lookup(web_port.value, "path", null)
             backend {
-              service_name = var.app_name
+              service_name = lookup(web_port.value, "service_name", var.app_name)
               service_port = web_port.value.internal_port
             }
           }
@@ -25,6 +25,14 @@ resource "kubernetes_ingress" "ingress" {
       for_each = var.tls
       content {
         secret_name = tls.value
+        hosts = lookup(tls.value, "hosts", null)
+      }
+    }
+    dynamic "tls" {
+      for_each = var.tls_hosts
+      content {
+        secret_name = tls.value.secret_name
+        hosts = tls.value.hosts
       }
     }
   }

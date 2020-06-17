@@ -25,7 +25,6 @@ resource "kubernetes_ingress" "ingress" {
       for_each = var.tls
       content {
         secret_name = tls.value
-        hosts = lookup(tls.value, "hosts", null)
       }
     }
     dynamic "tls" {

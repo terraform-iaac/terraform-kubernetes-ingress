@@ -1,13 +1,13 @@
-variable "app_name" {
+variable "service_name" {
   type        = string
-  description = "(Required) Application name for attach to ingress"
+  description = "(Required) Application name for attach to ingress. Service name."
 }
-variable "app_namespace" {
+variable "service_namespace" {
   type        = string
-  description = "(Required) Namespace where located application"
+  description = "(Required) Namespace where located service"
 }
-variable "web_internal_port" {
-  description = "(Required) Container port, ingress will redirect request to this port.  Also could add subdomain ( example: subdomain.domainname.com). And path for access ( example: domain.com/path ). And redefine domain."
+variable "rule" {
+  description = "(Required) External Service port, ingress will redirect request to this service port.  Also could add subdomain ( example: subdomain.domainname.com). And path for access ( example: domain.com/path ). And redefine domain."
 }
 variable "domain_name" {
   type        = string

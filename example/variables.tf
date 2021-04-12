@@ -1,4 +1,4 @@
-variable "internal_web_port" {
+variable "rule_ports" {
   default = [
     {
       sub_domain    = "jenkins."     //(Optional) ( subdomain must consist " . " in the end)
@@ -21,10 +21,10 @@ variable "domain_name" {
   default = "example.com"
 }
 
-variable "app_name" {
+variable "service_name" {
   default = "jenkins"
 }
 
-variable "app_namespace" {
+variable "service_namespace" {
   default = "ci-tools"
 }

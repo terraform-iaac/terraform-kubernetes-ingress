@@ -3,7 +3,7 @@ Terraform module for Kubernetes Ingress
 
 ## Usage (more in example direcotry)
 
-With default labels, selector finds pods with `app` label which equal to `app_name`
+With default labels, backend finds pods with `app` label which equal to `app_name`
 
 ### Example with ClusterIP
 ```
@@ -16,10 +16,10 @@ module "ingress" {
     "kubernetes.io/ingress.class" = "nginx-custom" // Default: nginx
   }
 
-  web_internal_port = [
+  rule = [
     {
       domain        = local.url
-      internal_port = var.ports_mapping.0.internal_port // Service port
+      external_port = var.ports_mapping.0.external_port // Service port
     }
   ]
   tls_hosts = [

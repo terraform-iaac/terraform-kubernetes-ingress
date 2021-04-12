@@ -1,21 +1,20 @@
 resource "kubernetes_ingress" "ingress" {
   metadata {
-    name        = var.app_name
-    namespace   = var.app_namespace
+    name        = var.service_name
+    namespace   = var.service_namespace
     annotations = var.annotations
   }
   spec {
     dynamic "rule" {
-      iterator = web_port
-      for_each = var.web_internal_port
+      for_each = var.rule
       content {
-        host = "${lookup(web_port.value, "sub_domain", "")}${lookup(web_port.value, "domain", var.domain_name)}"
+        host = "${lookup(rule.value, "sub_domain", "")}${lookup(rule.value, "domain", var.domain_name)}"
         http {
           path {
-            path = lookup(web_port.value, "path", null)
+            path = lookup(rule.value, "path", null)
             backend {
-              service_name = lookup(web_port.value, "service_name", var.app_name)
-              service_port = web_port.value.internal_port
+              service_name = lookup(rule.value, "service_name", var.service_name)
+              service_port = rule.value.external_port
             }
           }
         }

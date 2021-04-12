@@ -37,7 +37,7 @@ module "ingress" {
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12.26 |
-| kubernetes | >= 1.12.0 |
+| kubernetes | >= 2.0.0 |
 
 ## Inputs
 See in example directory & variables.tf
@@ -46,6 +46,4 @@ See in example directory & variables.tf
 | Name | Description |
 |------|:-----------:|
 | id | Kubernetes resource id |
-| urls | URLs in ingress |
-| load_balancer_ingress_ip | IP is set for load-balancer ingress points that are IP based |
-| load_balancer_ingress_hostname | Hostname is set for load-balancer ingress points that are DNS based |
+| urls | URLs in ingress ||

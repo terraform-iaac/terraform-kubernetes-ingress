@@ -5,6 +5,8 @@ resource "kubernetes_ingress" "ingress" {
     annotations = var.annotations
   }
   spec {
+    ingress_class_name = var.ingress_class_name
+
     dynamic "rule" {
       for_each = var.rule
       content {

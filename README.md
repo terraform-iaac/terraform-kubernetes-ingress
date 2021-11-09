@@ -13,7 +13,7 @@ module "ingress" {
   app_name      = module.service.name
   app_namespace = var.namespace
   annotations   = {
-    "kubernetes.io/ingress.class" = "nginx-custom" // Default: nginx
+    "app" = "test"
   }
 
   rule = [

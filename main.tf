@@ -17,8 +17,12 @@ resource "kubernetes_ingress_v1" "ingress" {
           path {
             path = lookup(rule.value, "path", null)
             backend {
-              service_name = lookup(rule.value, "service_name", var.service_name)
-              service_port = rule.value.external_port
+              service {
+                name = lookup(rule.value, "service_name", var.service_name)
+                port {
+                  number = rule.value.external_port
+                }
+              }
             }
           }
         }

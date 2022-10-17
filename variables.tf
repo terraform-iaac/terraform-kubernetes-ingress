@@ -2,6 +2,11 @@ variable "service_name" {
   type        = string
   description = "(Required) Application name for attach to ingress. Service name."
 }
+variable "ingress_v1_enable" {
+  type        = bool
+  description = "Enable ingress v1 tf resource type"
+  default     = true
+}
 variable "service_namespace" {
   type        = string
   description = "(Required) Namespace where located service"

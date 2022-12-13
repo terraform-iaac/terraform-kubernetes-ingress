@@ -2,6 +2,11 @@ variable "service_name" {
   type        = string
   description = "(Required) Application name for attach to ingress. Service name."
 }
+variable "ingress_name" {
+  type        = string
+  description = "Specific ingress name instead name as service"
+  default     = null
+}
 variable "ingress_v1_enable" {
   type        = bool
   description = "Enable ingress v1 tf resource type"
@@ -36,4 +41,8 @@ variable "ingress_class_name" {
 variable "tls_hosts" {
   description = "(Optional) Enable https traffic & and include SSL Certificate with hosts match"
   default     = []
+}
+variable "path_type" {
+  description = "Path type for ingress rule"
+  default     = "ImplementationSpecific"
 }

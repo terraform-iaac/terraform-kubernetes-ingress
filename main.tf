@@ -63,7 +63,6 @@ resource "kubernetes_ingress" "ingress" {
         http {
           path {
             path      = lookup(rule.value, "path", null)
-            path_type = lookup(rule.value, "path_type", var.path_type)
             backend {
               service_name = lookup(rule.value, "service_name", var.service_name)
               service_port = rule.value.external_port
